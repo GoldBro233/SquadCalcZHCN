@@ -36,11 +36,11 @@ const UB32_table = [
     [2178, 206.40174417867692],
 ];
 
-export const WEAPONSTYPE = ["deployables", "vehicles"];
+export const WEAPONSTYPE = ["可部署", "载具"];
 
 export var WEAPONS = [
     {
-        name: "Mortar",
+        name: "Mortar 迫击炮",
         velocity: 110,
         gravityScale: 1,
         minElevation: [800, 1579],
@@ -48,7 +48,7 @@ export var WEAPONS = [
         logo: classicLogo,
         marker: mortarIcon,
         logoCannonPos: "130%",
-        type: "deployables",
+        type: "可部署",
         angleType: "high",
         elevationPrecision: 0,
         minDistance: 51,
@@ -59,7 +59,7 @@ export var WEAPONS = [
         damageFallOff: 7,
     },
     {
-        name: "UB-32",
+        name: "UB-32 火箭巢",
         velocity: UB32_table,
         gravityScale: 2,
         minElevation: [-25, 35],
@@ -67,7 +67,7 @@ export var WEAPONS = [
         logo: ub322Logo,
         marker: ub32Icon,
         logoCannonPos: "110%",
-        type: "deployables",
+        type: "可部署",
         angleType: "low",
         elevationPrecision: 1,
         minDistance: 0,
@@ -78,7 +78,7 @@ export var WEAPONS = [
         damageFallOff: 1,
     },
     {
-        name: "Hell Cannon",
+        name: "Hell Cannon 地狱加农炮",
         velocity: 95,
         gravityScale: 1,
         minElevation: [10, 85],
@@ -86,7 +86,7 @@ export var WEAPONS = [
         logo: hellcannonLogo,
         marker: hellIcon,
         logoCannonPos: "130%",
-        type: "deployables",
+        type: "可部署",
         angleType: "high",
         elevationPrecision: 1,
         minDistance: 160,
@@ -97,7 +97,7 @@ export var WEAPONS = [
         damageFallOff: 1,
     },
     {
-        name: "Tech. Mortar",
+        name: "Tech. Mortar 移动迫击炮",
         velocity: 110,
         gravityScale: 1,
         minElevation: [-45, 135],
@@ -105,7 +105,7 @@ export var WEAPONS = [
         logo: technicalLogo,
         marker: tMortarIcon,
         logoCannonPos: "50%",
-        type: "vehicles",
+        type: "载具",
         angleType: "high",
         elevationPrecision: 1,
         minDistance: 51,
@@ -116,7 +116,7 @@ export var WEAPONS = [
         damageFallOff: 7,
     },
     {
-        name: "Tech. UB-32",
+        name: "Tech. UB-32 移动火箭巢",
         velocity: UB32_table,
         gravityScale: 2,
         minElevation: [-45, 135],
@@ -124,7 +124,7 @@ export var WEAPONS = [
         logo: ub32Logo,
         marker: tub32Icon,
         logoCannonPos: "55%",
-        type: "vehicles",
+        type: "载具",
         angleType: "low",
         elevationPrecision: 1,
         minDistance: 0,
@@ -142,8 +142,9 @@ export var WEAPONS = [
         unit: "deg",
         logo: mlrsLogo,
         marker: gradIcon,
+        
         logoCannonPos: "60%",
-        type: "vehicles",
+        type: "载具",
         angleType: "low",
         elevationPrecision: 1,
         minDistance: 0,
@@ -162,7 +163,7 @@ export var WEAPONS = [
         logo: m113Logo,
         marker: m121Icon,
         logoCannonPos: "45%",
-        type: "vehicles",
+        type: "载具",
         angleType: "high",
         elevationPrecision: 1,
         minDistance: 340,

@@ -1,36 +1,39 @@
+
 <!doctype html>
 <html lang="en" translate="no">
 
 <head>
 
-    <title>SquadCalc</title>
+    <title>SquadCalc</title> <!-- 网页标题 -->
 
-    <meta name="description" content="A Complete Mortar Calculator for SQUAD !">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
-    <meta name="theme-color" content="#111">
-    <meta charset="utf-8">
+    <meta name="description" content="A Complete Mortar Calculator for SQUAD !"> <!-- 网页描述 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1"> <!-- 浏览视口设置 -->
+    <meta name="theme-color" content="#111"> <!-- 主题颜色 -->
+    <meta charset="utf-8"> <!-- 字符编码 -->
 
-    <!-- SOCIAL MEDIA -->
-    <meta property="og:title" content="SquadCalc">
-    <meta property="og:description" content="A Complete Mortar Calculator for SQUAD !">
-    <meta property="og:image" content="https://i.imgur.com/MIYQv6D.png">
-    <meta property="og:url" content="https://squadcalc.app">
-    <meta name="twitter:card" content="https://i.imgur.com/MIYQv6D.png">
+    <!-- 社交媒体 -->
+    <meta property="og:title" content="SquadCalc"> <!-- Open Graph 标题 -->
+    <meta property="og:description" content="A Complete Mortar Calculator for SQUAD !"> <!-- Open Graph 描述 -->
+    <meta property="og:image" content="https://i.imgur.com/MIYQv6D.png"> <!-- Open Graph 图片 -->
+    <meta property="og:url" content="https://squadcalc.app"> <!-- Open Graph URL -->
+    <meta name="twitter:card" content="https://i.imgur.com/MIYQv6D.png"> <!-- Twitter 卡片 -->
 
-    <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/x-icon" href="./img/favicons/favicon.ico">
+    <!-- 网站图标 -->
+    <link rel="shortcut icon" type="image/x-icon" href="./img/favicons/favicon.ico"> <!-- Favicon -->
 
-    <!-- PRECONNECT FOR FASTER LOAD -->
+    <!-- 预加载字体加速加载 -->
     <link rel="preload" href="./fonts/webfonts/montserrat-v26-latin-regular.woff2" as="font" crossorigin>
     <link rel="preload" href="./fonts/webfonts/oswald-v53-latin-700.woff2" as="font" crossorigin>
     <link rel="preload" href="./fonts/webfonts/fa-brands-400.woff2" as="font" crossorigin>
     <link rel="preload" href="./fonts/webfonts/fa-solid-900.woff2" as="font" crossorigin>
 
-    <!-- FUCK IE / REGISTER SW -->
+    <!-- 针对IE浏览器和注册Service Worker的脚本 -->
     <script>
+        // 检测是否为Internet Explorer，如果是则重定向到浏览器选择页面
         if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.userAgent.match(/Trident.*rv[ :]*11\./)) {
             window.location = "https://choosebrowser.com/";
         }
+        // 注册Service Worker
         if ("serviceWorker" in navigator) {
             try {
                 navigator.serviceWorker.register("sw.js");
@@ -42,7 +45,7 @@
 
 </head>
 
-<body style="visibility: hidden;">
+<body style="visibility: hidden;"> <!-- 设置页面初始不可见 -->
 
 
     <div id="loader" class="pure-g">
@@ -53,12 +56,14 @@
     </div>
 
     <header class="pure-g">
+        <!-- 地图选择 -->
         <div class="pure-u-1 pure-u-md-1-5 mapSelector">
             <div id="mapSelector" class="dropdown">
                 <select class="dropbtn unselectable" tabindex="-1">
                 </select>
             </div>
         </div>
+        <!-- 武器选择和弹药选择 -->
         <div class="pure-u-1 pure-u-md-1-5 weaponSelector">
             <div id="weaponSelector" class="dropdown">
                 <select class="dropbtn2 unselectable" tabindex="-1">
@@ -80,13 +85,14 @@
         <div class="pure-u-20-24 pure-u-md-3-4 pure-u-lg-3-5 pure-u-xxl-10-24">
             <div class="pure-g">
 
+                <!-- 迫击炮坐标输入 -->
                 <div class="pure-u-1 pure-u-md-11-24">
                     <div class="pure-g">
                         <div class="pure-u-1-5 pure-u-md-6-24"><span tabindex="1" onFocus="document.querySelector('.autofocus11').focus()"></span></div>
                         <div class="pure-u-3-5 pure-u-md-17-24">
                             <div id="mortar" class="coord">
-                                <img id="mortarImg" class="unselectable pure-img" loading="lazy" src="./img/icons/mortar.png" alt="mortar">
-                                <input id="mortar-location" class="autofocus1" spellcheck="false" maxlength="10" type="text" placeholder="A01-5-7" autocomplete="off" tabindex="2" autofocus>
+                                <img id="mortarImg" class="unselectable pure-img" loading="lazy" src="./img/icons/mortar.png" alt="mortar"> <!-- 迫击炮图标 -->
+                                <input id="mortar-location" class="autofocus1" spellcheck="false" maxlength="10" type="text" placeholder="A01-5-7" autocomplete="off" tabindex="2" autofocus> <!-- 迫击炮位置输入框 -->
                             </div>
                         </div>
                         <div class="pure-u-1-5 pure-u-md-1-24"><span tabindex="4" onFocus="document.querySelector('.autofocus1').focus()"></span></div>
@@ -95,13 +101,14 @@
 
                 <div class="pure-u-md-2-24"></div>
 
+                <!-- 目标坐标输入 -->
                 <div class="pure-u-1 pure-u-md-11-24">
                     <div class="pure-g">
                         <div class="pure-u-1-5 pure-u-md-1-24"></div>
                         <div class="pure-u-3-5 pure-u-md-17-24">
                             <div id="target" class="coord">
-                                <img id="targetImg" class="unselectable pure-img" loading="lazy" src="./img/icons/target.png" alt="target">
-                                <input id="target-location" class="autofocus11" spellcheck="false" maxlength="10" type="text" placeholder="C03-2-7-9" autocomplete="off" tabindex="3">
+                                <img id="targetImg" class="unselectable pure-img" loading="lazy" src="./img/icons/target.png" alt="target"> <!-- 目标图标 -->
+                                <input id="target-location" class="autofocus11" spellcheck="false" maxlength="10" type="text" placeholder="C03-2-7-9" autocomplete="off" tabindex="3"> <!-- 目标位置输入框 -->
                             </div>
                         </div>
                         <div class="pure-u-1-5 pure-u-md-6-24 "></div>
@@ -115,16 +122,16 @@
                     <div id="settings">
                         <div id="copy" class="pure-g unselectable">
                             <div id="bearing" class="pure-u-10-24">
-                                <span id="bearingNum">xxx</span>
-                                <i class="fa-solid fa-drafting-compass fa-rotate-180"></i>
+                                <span id="bearingNum">xxx</span> <!-- 方位角结果 -->
+                                <i class="fa-solid fa-drafting-compass fa-rotate-180"></i> <!-- 指南针图标 -->
                             </div>
-                            <div id="errorMsg" class="pure-u-4-24">-</div>
+                            <div id="errorMsg" class="pure-u-4-24">-</div> <!-- 错误信息 -->
                             <div id="elevation" class="pure-u-10-24">
-                                <span id="elevationNum">xxxx</span>
-                                <button id="highlow"><i class="fa-solid fa-sort-amount-up"></i></button>
+                                <span id="elevationNum">xxxx</span> <!-- 仰角结果 -->
+                                <button id="highlow"><i class="fa-solid fa-sort-amount-up"></i></button> <!-- 切换高低姿态按钮 -->
                             </div>
                         </div>
-                        <button id="savebutton" class="hidden"><i class="fa-solid fa-tasks"></i></button>
+                        <button id="savebutton" class="hidden"><i class="fa-solid fa-tasks"></i></button> <!-- 隐藏的保存按钮 -->
                     </div>
                 </div>
                 <div class="pure-u-md-2-24 pure-u-lg-2-24"></div>
@@ -132,7 +139,7 @@
 
             <div id="saved" class="pure-g hidden unselectable">
                 <div class="pure-u-1">
-                    <div class="saved_list"></div>
+                    <div class="saved_list"></div> <!-- 保存的目标列表 -->
                 </div>
                 <span id="ruler"></span>
             </div>
@@ -144,20 +151,20 @@
 
     </div>
 
-    <canvas id="canvas" width="1000" height="1000"></canvas>
+    <canvas id="canvas" width="1000" height="1000"></canvas> <!-- 用于绘图的画布 -->
 
     <dialog id="helpDialog">
 
         <form method="dialog">
             <button class="closeModal">
-                <i class="fa-regular fa-circle-xmark"></i>
+                <i class="fa-regular fa-circle-xmark"></i> <!-- 关闭对话框按钮 -->
             </button>
         </form>
 
-        <h2>Settings</h2>
+        <h2>设置</h2> <!-- 设置对话框标题 -->
 
         <table class="userSettings">
-            <caption>Map Options</caption>
+            <caption>地图选项</caption> <!-- 地图选项 -->
             <tbody>
 
                 <tr>
@@ -172,7 +179,7 @@
                             <span></span>
                           </label>
                     </td>
-                    <td>Show Grid</td>
+                    <td>显示网格</td> <!-- 显示网格 -->
                 </tr>
 
                 <tr id="keypadUnderCursorSettingRow">
@@ -188,7 +195,7 @@
                           </label>
                     </td>
                     <td>
-                        Show Keypads under Cursor
+                        显示图钉下的坐标
                         <br>
                         <span id="KPSettingSubText" class="settingsSubtext">
                         </span>
@@ -207,7 +214,7 @@
                             <span></span>
                           </label>
                     </td>
-                    <td>Show Weapon Min/Max Range</td>
+                    <td>显示武器最小/最大射程</td> <!-- 显示武器最小/最大射程 -->
                 </tr>
 
                 <tr>
@@ -222,15 +229,15 @@
                             <span></span>
                           </label>
                     </td>
-                    <td>Use Classic Cursor</td>
+                    <td>使用经典图钉</td> <!-- 使用经典光标 -->
                 </tr>
 
             </tbody>
         </table>
 
 
-        <table class="userSettings">
-            <caption>Targets Options</caption>
+        <table class="使用设置">
+            <caption>Targets Options</caption> <!-- 目标选项 -->
             <tbody>
                 <tr>
                     <td>
@@ -244,7 +251,7 @@
                             <span></span>
                           </label>
                     </td>
-                    <td>Show Spread Radius</td>
+                    <td>显示散布半径</td> <!-- 显示散布半径 -->
                 </tr>
 
                 <tr>
@@ -259,7 +266,7 @@
                             <span></span>
                           </label>
                     </td>
-                    <td>Show 100 &amp; 25 Damage Radius</td>
+                    <td>显示100和25的伤害半径</td> <!-- 显示100和25的伤害半径 -->
                 </tr>
 
                 <tr>
@@ -275,7 +282,7 @@
                           </label>
                     </td>
                     <td>
-                        Show Animations
+                        显示动画 <!-- 显示动画 -->
                     </td>
                 </tr>
 
@@ -291,7 +298,7 @@
                             <span></span>
                           </label>
                     </td>
-                    <td>Show Bearing</td>
+                    <td>显示方位角</td> <!-- 显示方位角 -->
                 </tr>
 
                 <tr>
@@ -306,7 +313,7 @@
                             <span></span>
                           </label>
                     </td>
-                    <td>Show Distance</td>
+                    <td>显示距离</td> <!-- 显示距离 -->
                 </tr>
 
                 <tr>
@@ -321,25 +328,25 @@
                             <span></span>
                           </label>
                     </td>
-                    <td>Show Time of Flight</td>
+                    <td>显示飞行时间</td> <!-- 显示飞行时间 -->
                 </tr>
             </tbody>
         </table>
 
 
-        <h3>Preview</h3>
+        <h3>样式预览</h3> <!-- 预览 -->
 
         <div id="preview" class="unselectable">
             <div id="textPreview">
                 <span>1345</span><br>
-                <span class="bearingPreview">241.5°</span>
+                <span class="bearingPreview">241.5°</span> <!-- 预览方位角 -->
             </div>
             <div id="center">
-                <img id="damagePreview" loading="lazy" src="./img/icons/damage.png" alt="damagePreview">
-                <img id="spreadPreview" loading="lazy" src="./img/icons/spread.png" alt="spreadPreview">
-                <img id="gridPreview" loading="lazy" src="./img/icons/grid.png" alt="gridPreview">
-                <img id="markerPreview" loading="lazy" src="./img/icons/marker_target_enabled.webp" alt="markerPreview">
-                <img id="maxRangePreview" loading="lazy" src="./img/icons/maxrange.png" alt="maxRangePreview">
+                <img id="damagePreview" loading="lazy" src="./img/icons/damage.png" alt="damagePreview"> <!-- 预览伤害图标 -->
+                <img id="spreadPreview" loading="lazy" src="./img/icons/spread.png" alt="spreadPreview"> <!-- 预览散布图标 -->
+                <img id="gridPreview" loading="lazy" src="./img/icons/grid.png" alt="gridPreview"> <!-- 预览网格图标 -->
+                <img id="markerPreview" loading="lazy" src="./img/icons/marker_target_enabled.webp" alt="markerPreview"> <!-- 预览目标标记图标 -->
+                <img id="maxRangePreview" loading="lazy" src="./img/icons/maxrange.png" alt="maxRangePreview"> <!-- 预览最大范围图标 -->
             </div>
         </div> 
 
@@ -348,22 +355,22 @@
                 <tr>
                     <td>
                         <a class="fab-action" href="https://github.com/sh4rkman/SquadCalc/blob/master/CHANGELOG.md" target="_blank" rel="noopener noreferrer" aria-label="changelog" title="Change Log">
-                           <i class="fa-solid fa-book-open"></i>
+                           <i class="fa-solid fa-book-open"></i> <!-- 变更日志链接 -->
                         </a>
                     </td>
                     <td>
                         <a class="fab-action" href="https://github.com/sh4rkman/SquadCalc" target="_blank" rel="noopener noreferrer" aria-label="github" title="View code on Github">
-                           <i class="fa-brands fa-github"></i>
+                           <i class="fa-brands fa-github"></i> <!-- GitHub代码链接 -->
                         </a>
                     </td>
                     <td>
                         <a class="fab-action" href="https://www.youtube.com/@sh4rkman" target="_blank" rel="noopener noreferrer" aria-label="Youtube" title="Watch my videos!">
-                            <i class="fa-brands fa-youtube"></i>
+                            <i class="fa-brands fa-youtube"></i> <!-- YouTube链接 -->
                         </a>
                     </td>
                     <td> 
                         <a class="fab-action" href="https://github.com/sh4rkman/SquadCalc/issues" target="_blank" rel="noopener noreferrer" aria-label="Bugs" title="Report a bug">
-                            <i class="fa-solid fa-bug"></i>
+                            <i class="fa-solid fa-bug"></i> <!-- Bug汇报链接 -->
                         </a>
                     </td>
                 </tr>
@@ -387,19 +394,18 @@
 
         <dialog id="calcInformation">
             <form method="dialog">
-                <button class="closeModal">
-                    <i class="fa-regular fa-circle-xmark"></i>
+                <button class="closeModal            <i class="fa-regular fa-circle-xmark"></i> <!-- 关闭对话框按钮 -->
                 </button>
             </form>
 
-            <h2>Target Informations</h2>
+            <h2>目标信息标题</h2> <!-- 目标信息标题 -->
 
             <div id="canvasControls">
                 <button type="button" class="active" value="sim1" aria-label="Weapon 1">
-                    Weapon 1
+                    Weapon 1 <!-- 武器1按钮 -->
                 </button>
                 <button type="button" class="" value ="sim2" aria-label="Weapon 2">
-                    Weapon 2
+                    Weapon 2 <!-- 武器2按钮 -->
                 </button>
             </div>
             
@@ -407,16 +413,16 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td>Bearing</td><td class="infBearing"></td>
+                            <td>方位角</td><td class="infBearing"></td> <!-- 方位角 -->
                         </tr>
                         <tr>
-                            <td>Elevation</td><td class="infElevation"></td>
+                            <td>仰角 </td><td class="infElevation"></td> <!-- 仰角 -->
                         </tr>
                         <tr>
-                            <td>Distance</td><td class="infDistance"></td>
+                            <td>距离</td><td class="infDistance"></td> <!-- 距离 -->
                         </tr>
                         <tr>
-                            <td>Time of Flight</td><td class="infTimeOfFlight"></td>
+                            <td>飞行时间</td><td class="infTimeOfFlight"></td> <!-- 飞行时间 -->
                         </tr>
                     </tbody>
                 </table>
@@ -424,38 +430,37 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td class="infSpreadTooltip info">Spread</td><td class="infSpread"></td>
+                            <td class="infSpreadTooltip info">Spread</td><td class="infSpread"></td> <!-- 散布 -->
                         </tr>
                         <tr>
-                            <td>Weapon Height</td><td class="infWHeight"></td>
+                            <td>武器高度</td><td class="infWHeight"></td> <!-- 武器高度 -->
                         </tr>
                         <tr>
-                            <td>Target Height</td><td class="infTHeight"></td>
+                            <td>目标高度</td><td class="infTHeight"></td> <!-- 目标高度 -->
                         </tr>
                         <tr>
-                            <td>Height Difference</td><td class="infDHeight"></td>
+                            <td>高度差</td><td class="infDHeight"></td> <!-- 高度差 -->
                         </tr>
                     </tbody>
                 </table>
 
-                <canvas class="heightGraph" width="1000" height="600"></canvas>
-
+                <canvas class="heightGraph" width="1000" height="600"></canvas> <!-- 高度图表Canvas -->
             </div>
 
             <div id="sim2" class="sim">
                 <table>
                     <tbody>
                         <tr>
-                            <td>Bearing</td><td class="infBearing"></td>
+                            <td>方位角</td><td class="infBearing"></td> <!-- 方位角 -->
                         </tr>
                         <tr>
-                            <td>Elevation</td><td class="infElevation"></td>
+                            <td>仰角</td><td class="infElevation"></td> <!-- 仰角 -->
                         </tr>
                         <tr>
-                            <td>Distance</td><td class="infDistance"></td>
+                            <td>距离</td><td class="infDistance"></td> <!-- 距离 -->
                         </tr>
                         <tr>
-                            <td>Time of Flight</td><td class="infTimeOfFlight"></td>
+                            <td>飞行时间</td><td class="infTimeOfFlight"></td> <!-- 飞行时间 -->
                         </tr>
                     </tbody>
                 </table>
@@ -463,20 +468,20 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td class="infSpreadTooltip info">Spread</td><td class="infSpread"></td>
+                            <td class="infSpreadTooltip info">Spread</td><td class="infSpread"></td> <!-- 散布 -->
                         </tr>
                         <tr>
-                            <td>Weapon Height</td><td class="infWHeight"></td>
+                            <td>武器高度</td><td class="infWHeight"></td> <!-- 武器高度 -->
                         </tr>
                         <tr>
-                            <td>Target Height</td><td class="infTHeight"></td>
+                            <td>目标高度</td><td class="infTHeight"></td> <!-- 目标高度 -->
                         </tr>
                         <tr>
-                            <td>Height Difference</td><td class="infDHeight"></td>
+                            <td>高度差</td><td class="infDHeight"></td> <!-- 高度差 -->
                         </tr>
                     </tbody>
                 </table>
-                <canvas class="heightGraph" width="1000" height="600"></canvas>
+                <canvas class="heightGraph" width="1000" height="600"></canvas> <!-- 高度图表Canvas -->
             </div>
 
         </dialog>
@@ -487,25 +492,25 @@
     <dialog id="weaponInformation">
         <form method="dialog">
             <button class="closeModal">
-                <i class="fa-regular fa-circle-xmark"></i>
+                <i class="fa-regular fa-circle-xmark"></i> <!-- 关闭对话框按钮 -->
             </button>
         </form>
 
-        <h2>Weapon Informations</h2>
+        <h2>武器信息</h2> <!-- 武器信息标题 -->
 
-        <img class="weaponIcon" alt="weapon icon" src="./img/icons/mortar.png">
+        <img class="weaponIcon" alt="weapon icon" src="./img/icons/mortar.png"> <!-- 武器图标 -->
         
         <div class="sim active">
             <table>
                 <tbody>
                     <tr>
-                        <td>name</td><td class="infName"></td>
+                        <td>名称</td><td class="infName"></td> <!-- 名称 -->
                     </tr>
                     <tr>
-                        <td>Range</td><td class="infRange"></td>
+                        <td>射程</td><td class="infRange"></td> <!-- 射程 -->
                     </tr>
                     <tr>
-                        <td class="infVelocityTooltip info">Velocity</td><td class="infVelocity"></td>
+                        <td class="infVelocityTooltip info">速度</td><td class="infVelocity"></td> <!-- 速度 -->
                     </tr>
                 </tbody>
             </table>
@@ -513,13 +518,13 @@
             <table>
                 <tbody>
                     <tr>
-                        <td class="infMOATooltip info">MOA</td><td class="infMOA"></td>
+                        <td class="infMOATooltip info">MOA</td><td class="infMOA"></td> <!-- MOA（精度衡量） -->
                     </tr>
                     <tr>
-                        <td>100 damage radius</td><td class="inf100damage"></td>
+                        <td>100伤害半径</td><td class="inf100damage"></td> <!-- 100伤害半径 -->
                     </tr>
                     <tr>
-                        <td>25 damage radius</td><td class="inf25damage"></td>
+                        <td>25伤害半径</td><td class="inf25damage"></td> <!-- 25伤害半径 -->
                     </tr>
                 </tbody>
             </table>
@@ -529,16 +534,16 @@
             <table>
                 <tbody>
                     <tr id="angleChoice">
-                        <td class="noborder">Angle :</td>
+                        <td class="noborder">角度 :</td>
                         <td class="noborder">
                             <div id="angleChoiceSettings">
                                 <label>
                                     <input type="radio" id="angleChoiceLow" name="angleChoice" value="low">
-                                    Low
+                                    低角度 <!-- 低角度选择 -->
                                 </label>
                                 <label>
                                     <input type="radio" id="angleChoiceHigh" name="angleChoice" value="high" checked="checked">
-                                    High
+                                    高角度 <!-- 高角度选择 -->
                                 </label>
                             </div>
                         </td>
@@ -549,10 +554,10 @@
             <table>
                 <tbody>
                     <tr>
-                        <td class="noborder infHeightPaddingTooltip info">Additional height :</td>
+                        <td class="noborder infHeightPaddingTooltip info">附加高度 :</td>
                         <td class="noborder">
                             <div class="heightPadding">
-                                <input type="number" value="0" min="0" max="100" step="1">  meters
+                                <input type="number" value="0" min="0" max="100" step="1">  米 <!-- 附加高度输入框 -->
                             </div>
                         </td>
                     </tr>
@@ -564,19 +569,19 @@
 
     <div id="actionMenu">
         <button type="button" class="btn btn-delete" aria-label="delete all targets">
-            <i class="fa-solid fa-trash"></i>
+            <i class="fa-solid fa-trash"></i> <!-- 删除所有目标按钮 -->
         </button>
     </div>
 
     <div id="mapLayerMenu">
         <button type="button" class="btn btn-basemap" value="basemap" aria-label="Switch to base map">
-            <i class="fa-solid fa-map"></i>
+            <i class="fa-solid fa-map"></i> <!-- 切换到基础地图按钮 -->
         </button>
         <button type="button" class="btn btn-terrainmap" value="terrainmap" aria-label="Switch to terrain map">
-            <i class="fa-solid fa-mountain-sun"></i>
+            <i class="fa-solid fa-mountain-sun"></i> <!-- 切换到地形地图按钮 -->
         </button>
         <button type="button" class="btn btn-topomap" value="topomap" aria-label="Switch to topographic map">
-            <i class="fa-solid fa-mound"></i>
+            <i class="fa-solid fa-mound"></i> <!-- 切换到等高线地图按钮 -->
         </button>
     </div>
 
@@ -585,14 +590,14 @@
         <div class="fabs fab-wrapper2">
             <input id="fabCheckbox2" type="checkbox" class="fab-checkbox2">
             <label class="fab" for="fabCheckbox2">
-                    <i id="switchUIbutton" class="fab-dots-2 fa-solid fa-map"></i>
+                    <i id="switchUIbutton" class="fab-dots-2 fa-solid fa-map"></i> <!-- 地图切换按钮 -->
             </label>
         </div>
 
         <div class="fabs fab-wrapper">
             <input id="fabCheckbox" type="checkbox" class="fab-checkbox2">
             <label class="fab" for="fabCheckbox">
-                <i class="fab-dots-2 fa-solid fa-cog"></i>
+                <i class="fab-dots-2 fa-solid fa-cog"></i> <!-- 设置切换按钮 -->
             </label>
         </div>
 
@@ -600,4 +605,4 @@
 
 </body>
 
-</html>
+</html>            

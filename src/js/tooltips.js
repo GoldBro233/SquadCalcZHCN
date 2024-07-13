@@ -11,7 +11,7 @@ export var tooltip_coordPreview;
 tippy("#settings", {
     allowHTML: true,
     animation: "fade",
-    content: "<i class=\"fa fa-check\"></i> Copied !",
+    content: "<i class=\"fa fa-check\"></i> 复制了 !",
     placement: "bottom",
     theme: "new",
     trigger: "manual",
@@ -30,7 +30,7 @@ tippy("#bearingNum", {
     placement: "bottom",
     allowHTML: true,
     touch: false,
-    content: "Bearing </br> <span class=\"tooltipsubtext\">(where to aim)</span>",
+    content: "方位角 </br> <span class=\"tooltipsubtext\">(向哪里瞄准)</span>",
     theme: "results",
 });
 
@@ -38,28 +38,28 @@ tippy(".btn-delete", {
     animation: "fade",
     placement: "top",
     touch: false,
-    content: "Delete all targets",
+    content: "删除所有目标",
 });
 
 tippy(".btn-basemap", {
     animation: "fade",
     placement: "left",
     touch: false,
-    content: "Base Map",
+    content: "基础地图",
 });
 
 tippy(".btn-terrainmap", {
     animation: "fade",
     placement: "left",
     touch: false,
-    content: "Terrain Map",
+    content: "地形地图",
 });
 
 tippy(".btn-topomap", {
     animation: "fade",
     placement: "left",
     touch: false,
-    content: "Topographic Map",
+    content: "等高线地图",
 });
 
 
@@ -68,14 +68,14 @@ tippy("#elevationNum", {
     placement: "bottom",
     allowHTML: true,
     touch: false,
-    content: "Elevation </br> <span class=\"tooltipsubtext\">(how far it will shoot)</span>",
+    content: "仰角 </br> <span class=\"tooltipsubtext\">(这将会射多远)</span>",
     theme: "results",
 });
 
 tippy("#savebutton i", {
     animation: "fade",
     allowHTML: true,
-    content: "Save </br> <span class=\"tooltipsubtext\"> (the results for later)</span>",
+    content: "保存 </br> <span class=\"tooltipsubtext\"> (待会儿再用)</span>",
     interactiveDebounce: 75,
     placement: "bottom",
     theme: "results",
@@ -104,7 +104,7 @@ tippy(".infSpreadTooltip", {
     appendTo: targetDialog,
     theme: "infTooltips",
     delay: [500, 0],
-    content: "Due to the weapon's minute of angle (MOA) imprecision and the length of the projectile, shots can spread in an elliptical pattern.",
+    content: "由于武器的角分（MOA）不精确和弹丸的长度，射击可能会呈椭圆形分布。",
 });
 
 const weaponDialog = document.getElementById("weaponInformation");
@@ -116,7 +116,7 @@ tippy(".infMOATooltip", {
     theme: "infTooltips",
     delay: [500, 0],
 
-    content: "A minute of angle (MOA) in artillery measures weapon imprecision, indicating the spread of shots. One MOA equals 1/60th of a degree.",
+    content: "角分（MOA）在炮兵中用于衡量武器的不精确度，表示射击的散布范围。一个角分等于1度的1/60。",
 });
 tippy(".infVelocityTooltip", {
     animation: "fade",
@@ -126,7 +126,7 @@ tippy(".infVelocityTooltip", {
     theme: "infTooltips",
     delay: [500, 0],
 
-    content: "Muzzle velocity is the speed at which a projectile leaves the barrel of a gun, measured immediately upon exit. It affects the range, and accuracy the shot.",
+    content: "初速是指弹丸离开枪管时的速度，在刚离开时进行测量。初速会影响射击的射程和准确性。",
 });
 tippy(".infHeightPaddingTooltip", {
     animation: "fade",
@@ -136,5 +136,5 @@ tippy(".infHeightPaddingTooltip", {
     theme: "infTooltips",
     delay: [500, 0],
 
-    content: "When placing the weapon above the ground (e.g., on buildings or bridges), use this field to specify the additional height.",
+    content: "当将武器放置在地面以上（例如建筑物或桥梁上）时，请使用此字段来指定额外的高度。",
 });
